@@ -256,3 +256,7 @@ spec:
           claimName: efs-wordpress
   ```
 ![image](https://user-images.githubusercontent.com/49730521/87516831-a2b19900-c69b-11ea-9982-cfe5a5eac039.png)
+
+To configure Prometheus and Grafana, we need helm, therefore we need 2 more softwere: helm and triller.
+secondly we have set their path in environment variables on your windows system
+
