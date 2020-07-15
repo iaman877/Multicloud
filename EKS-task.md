@@ -1,7 +1,8 @@
 
 # Deployment of WebApp Over AWS-EKS Cluster
 
-![images](https://user-images.githubusercontent.com/49730521/87518483-f8874080-c69d-11ea-98c0-1a22a3e40076.jpg)
+![image](https://user-images.githubusercontent.com/49730521/87518705-3edc9f80-c69e-11ea-90b6-7568fd1487af.png)
+
 
 ## About this task :
 Agenda of this task is to deploy EKS services and its use-cases on real aplication : In this task, 1st  we learn about how it configure kubernetes with AWS cloud, 2nd  we will Integrate it with EBS,EFS and ELB, 3rd launch a pod that will be Wordpress with MYSQL 4th we will work on HELM, 5th launching a prometheus server on the eks integrate  with grafana.
