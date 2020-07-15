@@ -36,3 +36,5 @@ nodeGroups:
 
 _________________________________________________________________________________________________________________
 ![image](https://user-images.githubusercontent.com/49730521/87511402-dfc55d80-c692-11ea-9949-f3a1cd5d672e.png)
+
+> aws eks update-kubeconfig  --name vishalcluster
