@@ -260,3 +260,9 @@ spec:
 To configure Prometheus and Grafana, we need helm, therefore we need 2 more softwere: helm and triller.
 secondly we have set their path in environment variables on your windows system
 
+```
+kubectl -n kube-system create serviceaccount tiller
+kubectl create cluster rolebinding tiller --clusterrole cluster-admin  --serviceaccount=kube-system:tiller
+helm init --service-account tiller
+helm init --service-account tiller --upgrade
+```
