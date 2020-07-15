@@ -45,3 +45,5 @@ create one AWS Elastic file system
 
 ![image](https://user-images.githubusercontent.com/49730521/87512896-6f6c0b80-c695-11ea-81ef-815a57f8c917.png)
 
+Now we need to install Mysql on our system after installing i am going to create 3 different namespaces : MYSQL, Prometheus, Grafana. 
+
