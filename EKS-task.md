@@ -11,3 +11,5 @@ First, we have to create an IAM user with AdministratorAccess and uses there cre
 To configure the cluster over the AWS, save the file with .yml extension
 
 ![image](https://user-images.githubusercontent.com/49730521/87511102-688fc980-c692-11ea-8d9a-bed5f1303fe2.png)
+
+![image](https://user-images.githubusercontent.com/49730521/87511232-983ed180-c692-11ea-9179-3e1709789b53.png)
