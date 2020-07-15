@@ -146,4 +146,5 @@ spec:
        
       storage: 10G
 ```
+![image](https://user-images.githubusercontent.com/49730521/87515627-bf4cd180-c699-11ea-8055-6a9ec89af817.png)
 
