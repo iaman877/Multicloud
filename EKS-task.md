@@ -87,7 +87,8 @@ spec:
             path: /
 
 ```
-After this, create one ClusterRoleBinding 
+now, create one ClusterRoleBinding using this file "role.yml".
+
 ```
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
@@ -103,7 +104,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   ```
   
-Now, create a storage file 
+Now, create a storage using this file "storage.yml".
 ```
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
