@@ -266,3 +266,11 @@ kubectl create cluster rolebinding tiller --clusterrole cluster-admin  --service
 helm init --service-account tiller
 helm init --service-account tiller --upgrade
 ```
+Now we have to install Prometheus 
+
+```
+helm install  stable/prometheus  --namespace prometheus  --set 
+alertmanager.persistentVolume.storageClass="gp2"  --set 
+server.persistentVolume.storageClass="gp2"
+
+```
