@@ -42,3 +42,6 @@ ________________________________________________________________________________
 create one AWS Elastic file system
 
 ![image](https://user-images.githubusercontent.com/49730521/87512776-3d5aa980-c695-11ea-909d-459b0f812742.png)
+
+![image](https://user-images.githubusercontent.com/49730521/87512896-6f6c0b80-c695-11ea-81ef-815a57f8c917.png)
+
