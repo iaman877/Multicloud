@@ -47,3 +47,40 @@ create one AWS Elastic file system
 
 Now we need to install Mysql on our system after installing i am going to create 3 different namespaces : MYSQL, Prometheus, Grafana. 
 
+```
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: efs-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: efs-provisioner
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: efs-provisioner
+    spec:
+      containers:
+        - name: efs-provisioner
+          image: quay.io/external_storage/efs-provisioner:v0.1.0
+          env:
+            - name: FILE_SYSTEM_ID
+              value: fs-4d92189c
+            - name: AWS_REGION
+              value: ap-south-1
+            - name: PROVISIONER_NAME
+              value: gau-prov/aws-efs
+          volumeMounts:
+            - name: pv-volume
+              mountPath: /persistentvolumes
+      volumes:
+        - name: pv-volume
+          nfs:
+            server: fs-4d92189c.efs.ap-south-1.amazonaws.com
+            path: /
+
+```
