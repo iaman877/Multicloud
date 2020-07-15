@@ -274,3 +274,18 @@ alertmanager.persistentVolume.storageClass="gp2"  --set
 server.persistentVolume.storageClass="gp2"
 
 ```
+use portfording, change the port 
+```
+kubectl get svc -n prometheus
+kubectl -n prometheus port-forward svc/dull-bumblebee-prometheus-server  88
+```
+
+now install grafana wth the help this command 
+```
+helm install grafana/stable  --namespace grafana  --set
+persistence.storageClassName="gp2"  --set adminPasswod=redhat  --set 
+service.type=LooadBalancer
+```
+![image](https://user-images.githubusercontent.com/49730521/87518171-8ca4d800-c69d-11ea-95bb-975505dd3aa5.png)
+
+Finally we need to  delete our cluster, because EKS is paid service.
