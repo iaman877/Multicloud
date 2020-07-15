@@ -113,3 +113,35 @@ metadata:
 provisioner: gau-prov/aws-efs
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87514644-308b8500-c698-11ea-9231-401129fca692.png)
+
+Create a PVC (Persistent volume claim) using this file :"pvc.yml"
+
+```
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: efs-wordpress
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "aws-efs"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: efs-mysql
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "aws-efs"
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+       
+      storage: 10G
+```
+
