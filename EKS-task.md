@@ -7,4 +7,7 @@ First, we have to create an IAM user with AdministratorAccess and uses there cre
 ___________________________________________________________________________________________________________
 First, we have to create an IAM user with AdministratorAccess and uses there credentials to login in the AWSCLI 
 ![image](https://user-images.githubusercontent.com/49730521/87509774-e43c4700-c68f-11ea-8496-e1c6cecb8cc9.png)
+
 To configure the cluster over the AWS, save the file with .yml extension
+
+![image](https://user-images.githubusercontent.com/49730521/87511102-688fc980-c692-11ea-8d9a-bed5f1303fe2.png)
