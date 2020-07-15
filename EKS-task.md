@@ -49,6 +49,7 @@ Now we need to install Mysql on our system after installing i am going to create
 
 ![image](https://user-images.githubusercontent.com/49730521/87513874-02597580-c697-11ea-83f7-2628408001ec.png)
 
+Run this command > kubectl create -f efs.yml
 ```
 kind: Deployment
 apiVersion: apps/v1
