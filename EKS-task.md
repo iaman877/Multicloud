@@ -9,7 +9,27 @@ First, we have to create an IAM user with AdministratorAccess and uses there cre
 ![image](https://user-images.githubusercontent.com/49730521/87509774-e43c4700-c68f-11ea-8496-e1c6cecb8cc9.png)
 
 To configure the cluster over the AWS, save the file with .yml extension
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
 
-![image](https://user-images.githubusercontent.com/49730521/87511102-688fc980-c692-11ea-8d9a-bed5f1303fe2.png)
+```
+metadata:
+  name: vishalcluster
+  region: ap-south-1
+
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t2.micro
+    desiredCapacity: 2
+    ssh:
+          publicKeyName: mykey11	
+  - name: ng-2
+    instanceType: t2.micro
+    desiredCapacity: 2
+    ssh:
+          publicKeyName: mykey11
+
+```
 
 ![image](https://user-images.githubusercontent.com/49730521/87511232-983ed180-c692-11ea-9179-3e1709789b53.png)
