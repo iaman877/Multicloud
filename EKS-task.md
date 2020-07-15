@@ -211,8 +211,10 @@ spec:
   ```
   ![image](https://user-images.githubusercontent.com/49730521/87516354-e1931f00-c69a-11ea-9b8f-b822aec010ee.png)
 
-Now we need to deploy wordpress
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+Now we need to deploy wordpress and execute this file using rum " kubectl create -f wordpress.yml "  command 
+```
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
@@ -252,4 +254,5 @@ spec:
       - name: wordpress-persistent-storage
         persistentVolumeClaim:
           claimName: efs-wordpress
-We launch Wordpress which can join with MySQL 
+  ```
+
