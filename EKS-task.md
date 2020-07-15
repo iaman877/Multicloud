@@ -49,7 +49,7 @@ Now we need to install Mysql on our system after installing i am going to create
 
 ![image](https://user-images.githubusercontent.com/49730521/87513874-02597580-c697-11ea-83f7-2628408001ec.png)
 
-Run this command > kubectl create -f efs.yml
+Run this command > kubectl create -f efs.yml , this command will deploy pods using EFS.
 ```
 kind: Deployment
 apiVersion: apps/v1
@@ -86,4 +86,28 @@ spec:
             server: fs-4d92189c.efs.ap-south-1.amazonaws.com
             path: /
 
+```
+After this, create one ClusterRoleBinding 
+```
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: nfs-provisioner-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: wordpress-mysql
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+  ```
+  
+Now, create a storage file 
+```
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: aws-efs
+provisioner: gau-prov/aws-efs
 ```
