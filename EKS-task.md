@@ -146,5 +146,67 @@ spec:
        
       storage: 10G
 ```
+Now, create a secret for mysql and wordress 
 ![image](https://user-images.githubusercontent.com/49730521/87515627-bf4cd180-c699-11ea-8055-6a9ec89af817.png)
+
+deploy my MySQL server
+
+```
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: wordpress-mysql
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          
+          claimName: efs-mysql
+  ```
+Allow the Mysql Services 
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-mysql
+  labels:
+    app: wordpress
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: wordpress
+    tier: mysql
+  
+  clusterIP: None
+  ```
 
