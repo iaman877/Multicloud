@@ -116,6 +116,8 @@ provisioner: gau-prov/aws-efs
 
 Create a PVC (Persistent volume claim) using this file :"pvc.yml"
 
+> kubectl create -f pvc.yml
+
 ```
 kind: PersistentVolumeClaim
 apiVersion: v1
