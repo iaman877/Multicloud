@@ -26,6 +26,7 @@ resource "aws_key_pair" "task-2-key" {
 }
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87636503-7b6fd000-c75e-11ea-8db7-7b67db301cc3.png)
+_________________________________________________________________________________________________________________
 create a Security group with http,ssh,NFS enable 
 ```
 resource "aws_security_group" "allow_http_NFS" {
@@ -90,6 +91,17 @@ resource "aws_s3_bucket" "bucket1" {
 POLICY 
 }
 
+```
+Upload an image in the S3 bucket 
+```
+resource "aws_s3_bucket_object" "object" {
+  bucket = aws_s3_bucket.bucket1.id
+  key    = "img1"
+  source = "C:\Users\HP\Desktop\AWS-tsak2/img1.jpg"
+  etag = "C:\Users\HP\Desktop\AWS-tsak2/img1.jpg"
+depends_on = [aws_s3_bucket.bucket1,
+		]
+}
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
