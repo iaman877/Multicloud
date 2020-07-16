@@ -244,4 +244,31 @@ resource "aws_cloudfront_distribution" "cloudfront1" {
 }
 
 ```
+Add the URL of the cloudfront to the index.html 
+```
 ![image](https://user-images.githubusercontent.com/49730521/87541013-3300d580-c6be-11ea-8a6d-33030de3dcb3.png)
+resource "null_resource" "null_resource2" {
+ depends_on = [ aws_cloudfront_distribution.cloudfront1, ]
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = tls_private_key.private_key.private_key_pem
+    host     = aws_instance.instance_ec2.public_ip
+   }
+   provisioner "remote-exec" {
+      inline = [
+      "sudo su << EOF",
+      "echo \"<img src='https://${aws_cloudfront_distribution.cloudfront1.domain_name}/${aws_s3_bucket_object.object.key }'>\" >> /var/www/html/index.html",
+       "EOF"
+   ]
+ }
+}
+resource "null_resource" "null_resource3" {
+  depends_on = [
+      null_resource.null_resource2,
+   ]
+   provisioner "local-exec" {
+         command = "start chrome ${aws_instance.instance_ec2.public_ip}/index.html"
+    }
+}
+```
