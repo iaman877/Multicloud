@@ -26,7 +26,36 @@ resource "aws_key_pair" "task-2-key" {
 }
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87636503-7b6fd000-c75e-11ea-8db7-7b67db301cc3.png)
+create a Security group with http,ssh,NFS enable 
+```
+resource "aws_security_group" "allow_http_NFS" {
+  name        = "allow_http"
+  description = "Allows http and ssh NFS"
+  vpc_id      = "vpc-fa7e6292"
 
+
+  ingress {
+    description = "HTTP allow"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "NFS"
+    from_port   = 2049
+    to_port     = 2049
+    protocol    = "tcp"
+    cidr_blocks = [ "0.0.0.0/0" ]
+}
+  ingress {
+    description = "ssh"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+```
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
