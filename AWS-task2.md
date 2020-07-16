@@ -133,5 +133,48 @@ resource "aws_efs_mount_target" "mount_target" {
 }
 
 ```
+Create a cloudfront for delivering the Image Content  
+
+```
+resource "null_resource" "null-remote-1"  {
+ depends_on = [ 
+               aws_efs_mount_target.mount_target,
+                  ]
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = tls_private_key.private_key.private_key_pem
+    host     = aws_instance.instance_ec2.public_ip
+  }
+  provisioner "remote-exec" {
+      inline = [
+        "sudo echo ${aws_efs_file_system.allow_nfs.dns_name}:/var/www/html efs defaults,_netdev 0 0 >> sudo /etc/fstab",
+        "sudo mount  ${aws_efs_file_system.allow_nfs.dns_name}:/  /var/www/html",
+        "sudo https://raw.githubusercontent.com/Vedanshshri/new-repo/master/web.html > index.html",                                 
+        "sudo cp index.html  /var/www/html/",                  
+      ]
+  }
+}
+resource "null_resource" "null-remote-1"  {
+ depends_on = [ 
+               aws_efs_mount_target.mount_target,
+                  ]
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+    private_key = tls_private_key.private_key.private_key_pem
+    host     = aws_instance.instance_ec2.public_ip
+  }
+  provisioner "remote-exec" {
+      inline = [
+        "sudo echo ${aws_efs_file_system.allow_nfs.dns_name}:/var/www/html efs defaults,_netdev 0 0 >> sudo /etc/fstab",
+        "sudo mount  ${aws_efs_file_system.allow_nfs.dns_name}:/  /var/www/html",
+        "sudo https://raw.githubusercontent.com/Vedanshshri/new-repo/master/web.html > index.html",                                 
+        "sudo cp index.html  /var/www/html/",                  
+      ]
+  }
+}
+
+```
 ![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
 ![image](https://user-images.githubusercontent.com/49730521/87541013-3300d580-c6be-11ea-8a6d-33030de3dcb3.png)
