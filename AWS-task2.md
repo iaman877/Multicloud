@@ -55,6 +55,17 @@ resource "aws_security_group" "allow_http_NFS" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name = "allow_HTTP"
+  }
+}
+
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
