@@ -272,3 +272,4 @@ resource "null_resource" "null_resource3" {
     }
 }
 ```
+## OUTPUT 
