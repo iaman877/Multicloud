@@ -274,4 +274,5 @@ resource "null_resource" "null_resource3" {
 ```
 ## OUTPUT 
 
-![image](https://user-images.githubusercontent.com/49730521/87660431-abc66700-c77c-11ea-8fdb-b554d4a60780.png)
+![image](https://user-images.githubusercontent.com/49730521/87660558-e0d2b980-c77c-11ea-8c02-374fae4c100e.png)
+
