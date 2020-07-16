@@ -67,6 +67,30 @@ resource "aws_security_group" "allow_http_NFS" {
 }
 
 ```
+Create is a S3 bucket with Public access policy 
+```
+resource "aws_s3_bucket" "bucket1" {
+  bucket = "justlookingforsomeuniquenamewithoutspaces"
+  force_destroy = true
+  acl    = "public-read"
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::justlookingforsomeuniquenamewithoutspaces/*"
+    }
+  ]
+}
+POLICY 
+}
+
+```
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
