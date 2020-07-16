@@ -109,6 +109,9 @@ locals{
 		]
 }
 ```
+
+![image](https://user-images.githubusercontent.com/49730521/87638673-d2c36f80-c761-11ea-93f8-384bddf3c6dc.png)
+
 create a EFS file system and mount with EC2 instance 
 
 ```
@@ -117,15 +120,10 @@ resource "aws_efs_file_system" "allow_nfs" {
                 aws_instance.instance_ec2,  ] 
   creation_token = "allow_nfs"
 
-
-
-
   tags = {
     Name = "allow_nfs"
   }
 }
-
-
 resource "aws_efs_mount_target" "mount_target" {
  depends_on =  [ aws_efs_file_system.allow_nfs,
                          ] 
@@ -135,7 +133,5 @@ resource "aws_efs_mount_target" "mount_target" {
 }
 
 ```
-![image](https://user-images.githubusercontent.com/49730521/87638673-d2c36f80-c761-11ea-93f8-384bddf3c6dc.png)
-
 ![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
 ![image](https://user-images.githubusercontent.com/49730521/87541013-3300d580-c6be-11ea-8a6d-33030de3dcb3.png)
