@@ -92,7 +92,8 @@ POLICY
 }
 
 ```
-![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
+![image](https://user-images.githubusercontent.com/49730521/87661992-2ee8bc80-c77f-11ea-874a-765bd767e69f.png)
+
 ### Upload an image in the S3 bucket 
 ```
 resource "aws_s3_bucket_object" "object" {
