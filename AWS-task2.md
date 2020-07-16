@@ -27,7 +27,7 @@ resource "aws_key_pair" "task-2-key" {
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87636503-7b6fd000-c75e-11ea-8db7-7b67db301cc3.png)
 _________________________________________________________________________________________________________________
-create a Security group with http,ssh,NFS enable 
+### create a Security group with http,ssh,NFS enable 
 ```
 resource "aws_security_group" "allow_http_NFS" {
   name        = "allow_http"
@@ -68,7 +68,7 @@ resource "aws_security_group" "allow_http_NFS" {
 }
 
 ```
-Create is a S3 bucket with Public access policy 
+### Create is a S3 bucket with Public access policy 
 ```
 resource "aws_s3_bucket" "bucket1" {
   bucket = "justlookingforsomeuniquenamewithoutspaces"
@@ -93,7 +93,7 @@ POLICY
 
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
-Upload an image in the S3 bucket 
+### Upload an image in the S3 bucket 
 ```
 resource "aws_s3_bucket_object" "object" {
   bucket = aws_s3_bucket.bucket1.id
@@ -112,7 +112,7 @@ locals{
 
 ![image](https://user-images.githubusercontent.com/49730521/87638673-d2c36f80-c761-11ea-93f8-384bddf3c6dc.png)
 
-create a EFS file system and mount with EC2 instance 
+### create a EFS file system and mount with EC2 instance 
 
 ```
 resource "aws_efs_file_system" "allow_nfs" {
@@ -133,7 +133,7 @@ resource "aws_efs_mount_target" "mount_target" {
 }
 
 ```
-Create a cloudfront for delivering the Image Content  
+### Create a cloudfront for delivering the Image Content  
 
 ```
 resource "null_resource" "null-remote-1"  {
