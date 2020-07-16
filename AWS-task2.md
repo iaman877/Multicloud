@@ -155,23 +155,91 @@ resource "null_resource" "null-remote-1"  {
       ]
   }
 }
-resource "null_resource" "null-remote-1"  {
- depends_on = [ 
-               aws_efs_mount_target.mount_target,
+resource "aws_cloudfront_origin_access_identity" "o" {
+     comment = "this is oai"
+ }
+
+
+
+
+resource "aws_cloudfront_distribution" "cloudfront1" {
+  depends_on = [ 
+                 aws_s3_bucket_object.object,
                   ]
-  connection {
-    type     = "ssh"
-    user     = "ec2-user"
-    private_key = tls_private_key.private_key.private_key_pem
-    host     = aws_instance.instance_ec2.public_ip
+
+  origin {
+    domain_name = aws_s3_bucket.bucket1.bucket_regional_domain_name
+    origin_id   = local.s3_origin_id
+    s3_origin_config {
+           origin_access_identity = aws_cloudfront_origin_access_identity.o.cloudfront_access_identity_path 
+     }
   }
-  provisioner "remote-exec" {
-      inline = [
-        "sudo echo ${aws_efs_file_system.allow_nfs.dns_name}:/var/www/html efs defaults,_netdev 0 0 >> sudo /etc/fstab",
-        "sudo mount  ${aws_efs_file_system.allow_nfs.dns_name}:/  /var/www/html",
-        "sudo https://raw.githubusercontent.com/Vedanshshri/new-repo/master/web.html > index.html",                                 
-        "sudo cp index.html  /var/www/html/",                  
-      ]
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "Some comment"
+  default_root_object = "terraform.png"
+
+
+
+
+  logging_config {
+    include_cookies = false
+    bucket          =  aws_s3_bucket.bucket1.bucket_domain_name
+    
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = local.s3_origin_id
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+    viewer_protocol_policy = "allow-all"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  # Cache behavior with precedence 0
+  ordered_cache_behavior {
+    path_pattern     = "/content/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = local.s3_origin_id
+
+
+
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
+    compress               = true
+    viewer_protocol_policy = "redirect-to-https"
+  }
+  price_class = "PriceClass_200"
+  restrictions {
+    geo_restriction {
+      restriction_type = "whitelist"
+      locations        = ["US", "IN","CA", "GB", "DE"]
+    }
+  }
+  tags = {
+    Environment = "production"
+  }
+  viewer_certificate {
+    cloudfront_default_certificate = true
   }
 }
 
