@@ -27,7 +27,7 @@ resource "aws_key_pair" "task-2-key" {
 ```
 ![image](https://user-images.githubusercontent.com/49730521/87636503-7b6fd000-c75e-11ea-8db7-7b67db301cc3.png)
 _________________________________________________________________________________________________________________
-### create a Security group with http,ssh,NFS enable 
+### Create a Security group with http,ssh,NFS enable 
 ```
 resource "aws_security_group" "allow_http_NFS" {
   name        = "allow_http"
@@ -112,7 +112,7 @@ locals{
 
 ![image](https://user-images.githubusercontent.com/49730521/87638673-d2c36f80-c761-11ea-93f8-384bddf3c6dc.png)
 
-### create a EFS file system and mount with EC2 instance 
+### Create a EFS file system and mount with EC2 instance 
 
 ```
 resource "aws_efs_file_system" "allow_nfs" {
@@ -133,6 +133,8 @@ resource "aws_efs_mount_target" "mount_target" {
 }
 
 ```
+![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
+
 ### Create a cloudfront for delivering the Image Content  
 
 ```
@@ -158,8 +160,6 @@ resource "null_resource" "null-remote-1"  {
 resource "aws_cloudfront_origin_access_identity" "o" {
      comment = "this is oai"
  }
-
-
 
 
 resource "aws_cloudfront_distribution" "cloudfront1" {
@@ -244,5 +244,4 @@ resource "aws_cloudfront_distribution" "cloudfront1" {
 }
 
 ```
-![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
 ![image](https://user-images.githubusercontent.com/49730521/87541013-3300d580-c6be-11ea-8a6d-33030de3dcb3.png)
