@@ -9,6 +9,21 @@
 7. Create S3 bucket, and copy/deploy the images from github repo into the s3 bucket and change the permission to public readable.
 8 Create a Cloudfront using s3 bucket(which contains images) and use the Cloudfront URL to update in code in /var/www/html
 
+```
+provider "aws" {
+  region     = "ap-south-1"
+  profile = "aman"
+}
+resource "tls_private_key" "private_key" { 
+  algorithm   = "RSA"
+  rsa_bits = "2048"
+}
+resource "aws_key_pair" "task-2-key" {
+  depends_on = [ tls_private_key.private_key, ]
+  key_name   = "dev-key"
+  public_key = tls_private_key.private_key.public_key_openssh
+}
+```
 ![image](https://user-images.githubusercontent.com/49730521/87540610-a1916380-c6bd-11ea-9758-2aa1a456106d.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
