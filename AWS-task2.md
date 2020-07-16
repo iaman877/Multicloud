@@ -92,6 +92,7 @@ POLICY
 }
 
 ```
+![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 Upload an image in the S3 bucket 
 ```
 resource "aws_s3_bucket_object" "object" {
@@ -102,8 +103,12 @@ resource "aws_s3_bucket_object" "object" {
 depends_on = [aws_s3_bucket.bucket1,
 		]
 }
+locals{
+  s3_origin_id = "aws_s3_bucket.bucket1.id"
+  depends_on = [aws_s3_bucket.bucket1,
+		]
+}
 ```
-![image](https://user-images.githubusercontent.com/49730521/87540803-e0bfb480-c6bd-11ea-8adc-eaa3f62f36c5.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540886-fe8d1980-c6bd-11ea-9489-d425eae9fc3e.png)
 ![image](https://user-images.githubusercontent.com/49730521/87540949-18c6f780-c6be-11ea-8354-0e6549694950.png)
 ![image](https://user-images.githubusercontent.com/49730521/87541013-3300d580-c6be-11ea-8a6d-33030de3dcb3.png)
