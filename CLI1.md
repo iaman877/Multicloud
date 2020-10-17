@@ -32,3 +32,14 @@ aws --version
  
 ![5](https://user-images.githubusercontent.com/49730521/96339452-65054780-10b2-11eb-9dcc-8a194a606a48.png)
 
+### STEP 2:
+##  _✨Creating a Security group_
+A security group acts as a virtual firewall for your instance to control inbound and outbound traffic, to create Security group we have the command as  :
+```
+aws ec2 create-security-group --group-name  <value>  --description  <value>
+```
+![6](https://user-images.githubusercontent.com/49730521/96339494-b7466880-10b2-11eb-8c50-f577404c11c6.png)
+
+So, we have our security group created.
+
+![7](https://user-images.githubusercontent.com/49730521/96339502-c5948480-10b2-11eb-813a-f5b651f7a691.png)
