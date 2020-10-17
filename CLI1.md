@@ -83,3 +83,17 @@ aws ec2  attach-volume   --volume-id volume_id   --instance-id instance_id  --de
 Our volume is now successfully attached and we can see that in the Console of AWS.
 
 ![13](https://user-images.githubusercontent.com/49730521/96339729-0b9e1800-10b4-11eb-8132-71333266a164.png)
+
+### STEP 6:
+## _✨At last we have to Terminate the EC2 Instance_
+Before Terminating the EC2 Instance, we first Detach the EBS Volume using command
+
+```
+aws ec2  detach-volume  --volume-id  volume_id
+```
+![14](https://user-images.githubusercontent.com/49730521/96339857-c0383980-10b4-11eb-8fc3-8aeed72380ac.png)
+To Terminate the EC2 Instance use command :
+```
+aws ec2 terminate-instances --instance-ids  instance_id
+```
+![15](https://user-images.githubusercontent.com/49730521/96341022-9bdd5c80-10b6-11eb-8273-2ce6a516f914.png)
