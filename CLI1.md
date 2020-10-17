@@ -71,3 +71,15 @@ aws ec2 attach-volume --volume-id vol-0ef37a7b52cf3c87b--instance-id i-05bea6de1
 Our volume is now successfully created and we can see that in the Console of AWS.
 
 ![11](https://user-images.githubusercontent.com/49730521/96339644-a5b19080-10b3-11eb-8161-269de86fbb05.png)
+
+### STEP 5:
+## _✨ Attach the above created EBS volume to the instance that created in the previous steps._
+To Attach EBS Volume to EC2 Instance we have command :
+```
+aws ec2  attach-volume   --volume-id volume_id   --instance-id instance_id  --device device_name
+```
+![12](https://user-images.githubusercontent.com/49730521/96339705-017c1980-10b4-11eb-8a9f-a1e10804b486.png)
+
+Our volume is now successfully attached and we can see that in the Console of AWS.
+
+![13](https://user-images.githubusercontent.com/49730521/96339729-0b9e1800-10b4-11eb-8132-71333266a164.png)
