@@ -24,7 +24,7 @@ aws --version
  ```
  aws ec2 create-key-pair --key-name iaman
  ```
- 
+
  ![4](https://user-images.githubusercontent.com/49730521/96339422-36876c80-10b2-11eb-9a60-542736cb0a56.png)
  
  Now, we have our keypair ready and we can see that on the console too. 'iaman' is created successfully.
@@ -97,3 +97,6 @@ To Terminate the EC2 Instance use command :
 aws ec2 terminate-instances --instance-ids  instance_id
 ```
 ![15](https://user-images.githubusercontent.com/49730521/96341022-9bdd5c80-10b6-11eb-8273-2ce6a516f914.png)
+
+### ✨Working with Command Line Environment is always better than Using manual approach of GUI which leads us towards Automation World .
+## 🔰 So , In these Task,  I have build basic cloud Environment using CLI of AWS Cloud without going to AWS GUI Console .
