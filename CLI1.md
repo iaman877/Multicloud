@@ -7,6 +7,7 @@ The AWS Command Line Interface (CLI) is a tool to manage AWS services. AWS CLI p
 * Launch an instance using the above created key pair and security group.
 * Create an EBS volume of 1 GB. 
 * The final step is to attach the above created EBS volume to the instance you created in the previous steps.
+
 ⚡ To use AWS CLI, we need to download and install it on the top of Operating System,
 > aws --version
 
