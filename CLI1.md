@@ -43,3 +43,17 @@ aws ec2 create-security-group --group-name  <value>  --description  <value>
 So, we have our security group created.
 
 ![7](https://user-images.githubusercontent.com/49730521/96339502-c5948480-10b2-11eb-813a-f5b651f7a691.png)
+
+### STEP 3:
+## _✨Launching an Instance using above created key pair and Security group_
+Now we have to Launch one EC2 Instance using above Key pair and Security Group .To launch ec2 instance AWS CLI has command as :
+
+```
+aws ec2 run-instances   --security-group-ids   group_id   --instance-type _type_ --image-id ami_id   --key-name key_name  --count no_of_instance 
+```
+
+![8](https://user-images.githubusercontent.com/49730521/96339548-2328d100-10b3-11eb-85b8-ae905246983d.png)
+
+Our instance is now launched in ap-south-1a
+
+![9](https://user-images.githubusercontent.com/49730521/96339555-2d4acf80-10b3-11eb-9bdd-2969eb9df624.png)
