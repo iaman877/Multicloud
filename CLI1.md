@@ -99,4 +99,4 @@ aws ec2 terminate-instances --instance-ids  instance_id
 ![15](https://user-images.githubusercontent.com/49730521/96341022-9bdd5c80-10b6-11eb-8273-2ce6a516f914.png)
 
 ## ✨Working with Command Line Environment is always better than Using manual approach of GUI which leads us towards Automation World .
-### 🔰 So , In these Task,  I have build basic cloud Environment using CLI of AWS Cloud without going to AWS GUI Console .
+### 🔰 So , In this project,  I have build basic cloud Environment using CLI of AWS Cloud without going to AWS GUI Console .
