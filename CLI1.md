@@ -57,3 +57,17 @@ aws ec2 run-instances   --security-group-ids   group_id   --instance-type _type_
 Our instance is now launched in ap-south-1a
 
 ![9](https://user-images.githubusercontent.com/49730521/96339555-2d4acf80-10b3-11eb-9bdd-2969eb9df624.png)
+
+### STEP 4:
+##  _✨Create an EBS volume of 1 GB_
+After Launching EC2 Instance now we have to create one EBS Volume & this volume type will be general purpose SSD Volume.
+
+```
+aws ec2 attach-volume --volume-id vol-0ef37a7b52cf3c87b--instance-id i-05bea6de1322b3aec--device /dev/xvdh
+```
+
+![10](https://user-images.githubusercontent.com/49730521/96339629-9599b100-10b3-11eb-9c28-451a06785c7d.png)
+
+Our volume is now successfully created and we can see that in the Console of AWS.
+
+![11](https://user-images.githubusercontent.com/49730521/96339644-a5b19080-10b3-11eb-8161-269de86fbb05.png)
