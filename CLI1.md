@@ -11,9 +11,6 @@ The AWS Command Line Interface (CLI) is a tool to manage AWS services. AWS CLI p
 > aws --version
 
 ⚡ To perform the above task assigned, we need to configure the IAM - User profile that I have already created earlier. & we can also configure our own aws profile by providing access key Id , Secret key Id , region.
-```
-aws_access_key_id= 
-aws_secret_access_key= 
-aws_access_key_id=
-aws_secret_access_key=
-```
+
+![3](https://user-images.githubusercontent.com/49730521/96339322-a77a5480-10b1-11eb-89db-d0bc0a8443ae.png)
+
